@@ -22,10 +22,10 @@ CLASSES = ['Normal', 'Pharyngitis']
 # Update these URLs with the raw download links to your hosted .h5 files
 # (e.g., from GitHub Releases or Hugging Face Hub)
 MODEL_URLS = {
-    'mobilenetv2_final.h5': 'https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/mobilenetv2_final.h5',
-    'efficientnetb3_final.h5': 'https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/efficientnetb3_final.h5',
-    'resnet50v2_final.h5': 'https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/resnet50v2_final.h5',
-    'densenet121_final.h5': 'https://github.com/YOUR_USERNAME/YOUR_REPO/releases/download/v1.0/densenet121_final.h5'
+    'mobilenetv2_final.h5': 'sha256:8b5e18f4f182bab66b96120f4cf1a8143d878c96a0ff57db18b59ec32ddf2514',
+    'efficientnetb3_final.h5': 'sha256:216aea6de31bb59e5d2637eb3a408470503a4cbb2f136263f5f7bfa47234c675',
+    'resnet50v2_final.h5': 'sha256:dc12bf1c0c42ef8ddaf4f8be7a4ad3984deedcc972c3363ea463be010717eecd',
+    'densenet121_final.h5': 'sha256:e897a807c78742999479178c133366338338d71d30db5aa891be36ee521c9ef3'
 }
 
 # Preprocessing map based on Keras applications
