@@ -166,11 +166,17 @@ if uploaded_img is not None and len(models) == 4:
                     efficientnet_img_batch = img_batch
             
             # 2. Ensemble Aggregation (Soft-Voting)
-            ensemble_probs = np.mean(all_probs, axis=0)
+            ensemble_probs = np.mean(all_probs, axis=0).flatten() # Added .flatten() here
             pred_idx = np.argmax(ensemble_probs)
             confidence = ensemble_probs[pred_idx]
-            severity = ensemble_probs * 100  # Pharyngitis probability * 100
-            pred_class = CLASSES[pred_idx]
+            
+            # Safely handle severity depending on model output shape
+            if len(ensemble_probs) > 1:
+                severity = ensemble_probs[1] * 100  # 2-class softmax (Normal, Pharyngitis)
+            else:
+                severity = ensemble_probs * 100  # 1-class sigmoid fallback
+                
+            pred_class = CLASSES[pred_idx] if len(ensemble_probs) > 1 else CLASSES[int(np.round(ensemble_probs))]
             
             # 3. Clinical Recommendation Logic
             if pred_class == 'Normal' and severity < 30:
