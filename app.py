@@ -158,7 +158,7 @@ if uploaded_img is not None and len(models) == 4:
                 
                 probs = model.predict(img_batch, verbose=0).flatten()
                 all_probs.append(probs)
-                model_names.append(fname.split('_')) # simplify name
+                model_names.append(fname.split('_').capitalize())
                 
                 # Save efficientnet input for Grad-CAM
                 if 'efficientnet' in fname.lower():
