@@ -138,7 +138,7 @@ if uploaded_img is not None and len(models) == 4:
     image_np = np.array(image)
     image_resized = cv2.resize(image_np, IMG_SIZE)
     
-    col1, col2 = st.columns()
+    col1, col2 = st.columns([1, 2])
     
     with col1:
         st.image(image_resized, caption="Uploaded Image", use_container_width=True)
