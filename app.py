@@ -156,7 +156,7 @@ if uploaded_img is not None and len(models) == 4:
                 preprocess_fn = get_preprocessing_function(fname)
                 img_batch = preprocess_fn(np.expand_dims(image_resized.astype(np.float32), axis=0))
                 
-                probs = model.predict(img_batch, verbose=0)
+                probs = model.predict(img_batch, verbose=0).flatten()
                 all_probs.append(probs)
                 model_names.append(fname.split('_')) # simplify name
                 
@@ -211,7 +211,7 @@ if uploaded_img is not None and len(models) == 4:
             with v_col1:
                 fig, ax = plt.subplots(figsize=(6, 4))
                 y_pos = np.arange(len(model_names))
-                pharyngitis_probs = [p * 100 for p in all_probs]
+                pharyngitis_probs = [float(p[-1]) * 100 for p in all_probs]
                 
                 bars = ax.barh(y_pos, pharyngitis_probs, align='center', color='skyblue')
                 ax.set_yticks(y_pos, labels=model_names)
